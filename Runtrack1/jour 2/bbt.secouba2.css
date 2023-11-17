@@ -1,0 +1,18 @@
+    <title>Page 2</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #bfbfbf;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            text-align: center;
+        }
+        h1 {
+            color: #cc0000;
+            padding: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>

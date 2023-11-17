@@ -1,0 +1,45 @@
+body {background-image:url(./image/Victory_A.png);
+	<!DOCTYPE html>
+<html>
+<head>
+    <title>Modèle 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+        #cv {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .section-title {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .section-content {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="cv">
+        <h1>Modèle 1</h1>
+        <div class="section">
+            <h2 class="section-title">Expérience Professionnelle</h2>
+            <p class="section-content">Contenu de l'expérience professionnelle.</p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Formation</h2>
+            <p class="section-content">Contenu de la formation.</p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Compétences</h2>
+            <p class="section-content">Liste des compétences.</p>
+        </div>
+    </div>
+</body>
+</html>

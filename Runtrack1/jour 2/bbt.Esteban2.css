@@ -1,0 +1,40 @@
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #bfbfbf;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            text-align: center;
+        }
+        h1 {
+            color: #cc0000;
+            padding: 20px;
+            margin: 10px;
+        }
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #ff0000;
+            }
+            .Esteban {
+                max-width: 800px;
+                margin: 20px auto;
+                padding: 20px;
+                background-color: #fb0000;
+                box-shadow: 0 0 10px rgba(142, 4, 4, 0.2);
+            }
+            .section-title {
+                color: #333;
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+            .section-content {
+                color: #666;
+            }
+
+            
+                <h2 class="section-title">Expérience Professionnelle</h2>
+                <p class="section-content">Contenu de l'expérience professionnelle.</p>
+            </div>
+            <div class="section">
+                <h2 class="section-title">Formation</h2>
