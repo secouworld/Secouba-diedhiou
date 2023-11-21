@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello LaPlateforme</title>
+    <title>index.css</title>
 </head>
 <body>
 
 <?php
-$a='Hello';
-$b='LaPlateforme';
-
- function hello($a, $b) {
-    return $a.' '.$b;
+function getHello() {
+    return "Hello LaPlateforme!";
 }
-echo hello($a, $b);
+
+
+$message = getHello();
+echo "<p>$message</p>";
 ?>
 
 </body>
 </html>
+
