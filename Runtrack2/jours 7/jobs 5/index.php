@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leet Speak Converter</title>
+    <title>Occurrences de caractère</title>
 </head>
 <body>
 
 <?php
-function leetSpeak($str) {
-   
-    $str = str_replace(['A', 'B', 'E', 'G', 'L', 'S', 'T', 'a', 'b', 'e', 'g', 'l', 's', 't'],
-                       ['4', '8', '3', '6', '1', '5', '7', '4', '8', '3', '6', '1', '5', '7'], $str);
-    return $str;
+function occurrences($str, $char) {
+
+    return substr_count($str, $char);
 }
 
-$texte = "Leet Speak is awesome!";
-$resultatLeetSpeak = leetSpeak($texte);
+$texte = "Bonjour";
+$caractere = "o";
+$nombreOccurrences = occurrences($texte, $caractere);
 
-echo "<p>Texte original : $texte</p>";
-echo "<p>Leet Speak : $resultatLeetSpeak</p>";
+echo "<p>Le nombre d'occurrences de '$caractere' dans '$texte' est : $nombreOccurrences</p>";
 ?>
 
 </body>

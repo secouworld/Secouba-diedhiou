@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transformations de texte</title>
     <style>
-        
+       
         .resultat {
             font-weight: bold;
             color: green;
@@ -16,6 +16,7 @@
 
 <?php
 
+function gras($str) {
     $mots = explode(' ', $str);
     foreach ($mots as &$mot) {
         if (ctype_upper(substr($mot, 0, 1))) {
@@ -30,7 +31,7 @@ function cesar($str, $decalage = 2) {
     $resultat = '';
     for ($i = 0; $i < strlen($str); $i++) {
         $caractere = $str[$i];
-        
+       
         if (ctype_alpha($caractere)) {
             $minuscule = (ord($caractere) >= 97);
             $caractere = chr((ord($caractere) + $decalage - ($minuscule ? 97 : 65)) % 26 + ($minuscule ? 97 : 65));
@@ -52,11 +53,11 @@ function plateforme($str) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
+   
     $inputStr = isset($_POST['str']) ? $_POST['str'] : '';
     $selectedFunction = isset($_POST['fonction']) ? $_POST['fonction'] : '';
 
-   
+    
     switch ($selectedFunction) {
         case 'gras':
             $resultat = gras($inputStr);
@@ -97,3 +98,4 @@ if (isset($resultat)) {
 
 </body>
 </html>
+

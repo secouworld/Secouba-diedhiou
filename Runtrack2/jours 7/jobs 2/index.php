@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index.css</title>
+    <title>Occurrences de caractère</title>
 </head>
 <body>
 
 <?php
-function getHello() {
-    return "Hello LaPlateforme!";
+function bonjour($jour) {
+    if ($jour === true) {
+        echo "Bonjour";
+    } else {
+        echo "Bonsoir";
+    }
 }
 
+bonjour(true);
 
-$message = getHello();
-echo "<p>$message</p>";
 ?>
+
 
 </body>
 </html>
