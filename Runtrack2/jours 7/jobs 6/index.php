@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leet Speak Converter</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 
@@ -17,10 +29,12 @@ function leetSpeak($str) {
 $texte = "Leet Speak is awesome!";
 $resultatLeetSpeak = leetSpeak($texte);
 
-echo "<p>Texte original : $texte</p>";
-echo "<p>Leet Speak : $resultatLeetSpeak</p>";
+// Affichage sous forme de tableau
+echo "<table>";
+echo "<tr><th>Texte original</th><td>$texte</td></tr>";
+echo "<tr><th>Leet Speak</th><td>$resultatLeetSpeak</td></tr>";
+echo "</table>";
 ?>
-
 
 </body>
 </html>
