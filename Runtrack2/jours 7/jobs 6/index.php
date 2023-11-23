@@ -29,7 +29,7 @@ function leetSpeak($str) {
 $texte = "Leet Speak is awesome!";
 $resultatLeetSpeak = leetSpeak($texte);
 
-// Affichage sous forme de tableau
+
 echo "<table>";
 echo "<tr><th>Texte original</th><td>$texte</td></tr>";
 echo "<tr><th>Leet Speak</th><td>$resultatLeetSpeak</td></tr>";
