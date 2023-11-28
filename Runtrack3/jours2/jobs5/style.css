@@ -1,0 +1,19 @@
+body {
+    min-height: 4096px; /* Taille minimale du body */
+    margin: 0; /* Supprimer la marge par défaut du body */
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 20px; /* Hauteur du footer (ajustez selon vos besoins) */
+    background-color: #00f; /* Couleur initiale du footer */
+}
+
+/* Barre de progression du footer */
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: #0f0; /* Couleur de la barre de progression */
+}

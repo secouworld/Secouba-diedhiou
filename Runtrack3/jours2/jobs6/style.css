@@ -1,0 +1,27 @@
+/* Styles spécifiques à La Plateforme_ */
+body.konami-styled {
+    background-color: #000; /* Fond noir */
+    color: #fff; /* Texte blanc */
+    font-family: 'La Plateforme_', sans-serif; /* Police spécifique */
+
+    /* Ajoutez d'autres styles selon vos préférences */
+    padding: 20px;
+}
+
+/* Styles pour les liens dans l'état Konami */
+body.konami-styled a {
+    color: #ff0; /* Couleur des liens en jaune */
+    text-decoration: underline;
+}
+
+/* Styles pour les titres dans l'état Konami */
+body.konami-styled h1 {
+    font-size: 2em; /* Taille de police augmentée */
+}
+
+/* Styles pour la barre de progression dans l'état Konami */
+body.konami-styled .progress-bar {
+    background-color: #f00; /* Couleur rouge */
+}
+
+/* Ajoutez d'autres styles spécifiques au Konami si nécessaire */
