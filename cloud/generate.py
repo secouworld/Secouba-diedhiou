@@ -61,34 +61,29 @@ def visuels(projet):
     return locaux or sorted(p for p in PARTAGES.glob("*") if p.suffix.lower() in EXT)
 
 
-def video(projet, mp3, srt, sortie):
-    d = duree(mp3)
+def video(projet, mp3, srt, sortie, index=0):
     imgs = visuels(projet)
-    chemin_srt = srt.as_posix().replace(":", r"\:")
-    filtre = ("scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,"
-              f"subtitles='{chemin_srt}':force_style='FontName=Arial,FontSize=42,"
-              "PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BorderStyle=1,Outline=3,Alignment=2,MarginV=120'")
+    base = "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920"
+    filtre = base
+    if srt.exists() and srt.stat().st_size > 0:
+        filtre += (f",subtitles={srt.name}:force_style='FontName=Arial,FontSize=42,"
+                   "PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BorderStyle=1,Outline=3,Alignment=2,MarginV=120'")
     if imgs:
-        liste = sortie.with_suffix(".txt")
-        lignes = []
-        for img in imgs:
-            lignes += [f"file '{img.as_posix()}'", f"duration {d / len(imgs):.3f}"]
-        lignes.append(f"file '{imgs[-1].as_posix()}'")
-        liste.write_text("\n".join(lignes), encoding="utf-8")
-        entree = ["-f", "concat", "-safe", "0", "-i", str(liste)]
+        fond = imgs[index % len(imgs)]
+        entree = ["-loop", "1", "-framerate", "30", "-i", str(fond)]
     else:
         entree = ["-f", "lavfi", "-i", "color=c=0x0b0f18:s=1080x1920:r=30"]
     cmd = ["ffmpeg", "-y", *entree, "-i", str(mp3), "-vf", filtre,
            "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
            "-c:a", "aac", "-b:a", "128k", "-shortest", str(sortie)]
-    subprocess.run(cmd, check=True)
+    subprocess.run(cmd, check=True, cwd=str(srt.parent))
 
 
 async def main():
     SORTIE.mkdir(exist_ok=True)
     dossiers = sorted(p for p in PROJETS.iterdir() if (p / "script.txt").exists())
     ok = 0
-    for p in dossiers:
+    for index, p in enumerate(dossiers):
         texte = lire_script(p / "script.txt")
         if not texte:
             continue
@@ -97,7 +92,7 @@ async def main():
         mp3, srt, mp4 = out / "voice.mp3", out / "subs.srt", out / "video.mp4"
         try:
             await voix(texte, mp3, srt)
-            video(p, mp3, srt, mp4)
+            video(p, mp3, srt, mp4, index)
             ok += 1
             print(f"OK {p.name}")
         except Exception as e:
