@@ -1,0 +1,17 @@
+file '/home/runner/work/Secouba-diedhiou/Secouba-diedhiou/cloud/visuals/01-humain.jpg'
+duration 4.617
+file '/home/runner/work/Secouba-diedhiou/Secouba-diedhiou/cloud/visuals/02-insecte.jpg'
+duration 4.617
+file '/home/runner/work/Secouba-diedhiou/Secouba-diedhiou/cloud/visuals/03-oiseau.jpg'
+duration 4.617
+file '/home/runner/work/Secouba-diedhiou/Secouba-diedhiou/cloud/visuals/04-chien.jpg'
+duration 4.617
+file '/home/runner/work/Secouba-diedhiou/Secouba-diedhiou/cloud/visuals/05-serpent.jpg'
+duration 4.617
+file '/home/runner/work/Secouba-diedhiou/Secouba-diedhiou/cloud/visuals/06-chauve-souris.jpg'
+duration 4.617
+file '/home/runner/work/Secouba-diedhiou/Secouba-diedhiou/cloud/visuals/07-poisson.jpg'
+duration 4.617
+file '/home/runner/work/Secouba-diedhiou/Secouba-diedhiou/cloud/visuals/08-ia.jpg'
+duration 4.617
+file '/home/runner/work/Secouba-diedhiou/Secouba-diedhiou/cloud/visuals/08-ia.jpg'
