@@ -1,0 +1,53 @@
+name: Traiter les medias dans le cloud
+
+on:
+  push:
+    paths:
+      - 'inbox/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  traiter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Installer FFmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Traiter images et videos
+        run: |
+          mkdir -p output logs
+          for f in inbox/*; do
+            [ -e "$f" ] || continue
+            ext="${f##*.}"
+            base=$(basename "$f" ".$ext")
+            echo "Traitement de $f"
+            case "${ext,,}" in
+              jpg|jpeg|png|webp)
+                mkdir -p "output/$base"
+                ffmpeg -y -i "$f" -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920" -q:v 2 "output/$base/vertical.jpg" || true
+                ffmpeg -y -i "$f" -vf "scale=1080:1080:force_original_aspect_ratio=increase,crop=1080:1080" -q:v 2 "output/$base/carre.jpg" || true
+                ffmpeg -y -i "$f" -vf "scale=400:400" -q:v 2 "output/$base/miniature.jpg" || true
+                ;;
+              mp4|mov|mkv|avi|webm|m4v)
+                mkdir -p "output/$base"
+                ffmpeg -y -ss 1 -i "$f" -frames:v 1 "output/$base/miniature.jpg" || true
+                ffmpeg -y -i "$f" -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920" -c:v libx264 -preset fast -pix_fmt yuv420p -c:a aac "output/$base/vertical.mp4" || true
+                ffmpeg -y -i "$f" -vn -acodec mp3 "output/$base/audio.mp3" || true
+                ;;
+              *) echo "Format ignore : $ext" ;;
+            esac
+          done
+
+      - name: Sauvegarder les resultats
+        run: |
+          git config user.name "BusinessOS Bot"
+          git config user.email "bot@businessos.local"
+          git add output logs || true
+          git diff --quiet && git diff --cached --quiet || git commit -m "Medias traites automatiquement"
+          git push || true
